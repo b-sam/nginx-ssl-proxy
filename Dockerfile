@@ -30,4 +30,9 @@ ADD nginx/nginx.conf /etc/nginx/
 ADD nginx/proxy*.conf /usr/src/
 ADD nginx/extra/*.conf /etc/nginx/extra-conf.d/
 
-ENTRYPOINT ./start.sh
+
+RUN chmod -R 777 /usr/src
+RUN chmod -R 777 /etc/nginx
+RUN chmod 777 -R /etc/nginx/extra-conf.d
+
+CMD ["/usr/src/start.sh"]
